@@ -89,7 +89,7 @@ def get_image_link(page_url):
         try:
             detail_link = soup.find("video").a['href']
         except:
-            print("Hint: An ignored image link. %s" % page_url)
+            print("Hint !!!: An ignored image link. %s" % page_url)
             detail_link = None
     return detail_link
 
