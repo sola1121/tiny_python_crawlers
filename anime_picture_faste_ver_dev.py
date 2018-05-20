@@ -85,11 +85,12 @@ def get_image_link(page_url, que):
     soup = BeautifulSoup(res.text, 'lxml')
     try:
         detail_link = soup.find("div", class_="post-content").p.a['href']
-        if detail_link is None:
-            detail_link = soup.find("video").a['href']
     except:
-        print("Hint: An ignored image link.")
-        detail_link = None
+        try:
+            detail_link = soup.find("video").a['href']
+        except:
+            print("Hint: An ignored image link. %s" % page_url)
+            detail_link = None
     if detail_link is not None:
         que.put(detail_link)
 
